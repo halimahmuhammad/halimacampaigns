@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halima Muhammad — Digital Campaign Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1F3A;
+    --navy2: #122444;
+    --navy3: #1A2F52;
+    --red: #C8102E;
+    --red-bright: #E8192E;
+    --white: #F4F1EC;
+    --white-muted: #B8B4AC;
+    --star: #FFD700;
+    --star-soft: #FFE566;
+    --text: #F4F1EC;
+    --text-muted: #8A9BB5;
+    --border: rgba(255,255,255,0.08);
+    --border-bright: rgba(255,255,255,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* STAR FIELD */
+  .starfield {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    background: var(--star);
+    border-radius: 50%;
+    animation: twinkle var(--dur) ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--op); transform: scale(1); }
+    50% { opacity: calc(var(--op) * 0.2); transform: scale(0.7); }
+  }
+
+  /* RED STRIPE accent */
+  .stripe-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--red) 0px, var(--red) 40px,
+      var(--white) 40px, var(--white) 80px,
+      var(--navy) 80px, var(--navy) 120px
+    );
+    z-index: 100;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 0 4rem;
+    position: relative;
+  }
+
+  .star-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+
+  .star-icon {
+    color: var(--star);
+    font-size: 14px;
+    animation: spin 8s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--star);
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+
+  h1 .line-red { color: var(--red-bright); display: block; }
+  h1 .line-star { color: var(--star); display: block; }
+  h1 .line-white { color: var(--white); display: block; }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 460px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+    border-left: 3px solid var(--red);
+    padding-left: 1rem;
+  }
+
+  .hero-cta {
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: var(--white);
+    padding: 1rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+  }
+
+  .btn-primary::after {
+    content: '★';
+    font-size: 10px;
+    color: var(--star);
+    margin-left: 2px;
+  }
+
+  .btn-primary:hover { background: var(--red-bright); transform: translateY(-2px); }
+
+  .spots-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .spots-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--star);
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,215,0,0.4); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(255,215,0,0); }
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 8px, transparent 8px, transparent 16px);
+    opacity: 0.3;
+    margin: 0;
+  }
+
+  /* SECTION */
+  section { padding: 5rem 0; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--star);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before { content: '★'; font-size: 8px; }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-bright);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.03em;
+    color: var(--white);
+  }
+
+  h2 em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--star);
+    font-size: 0.9em;
+    letter-spacing: 0;
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .service-item {
+    background: var(--navy2);
+    padding: 1.75rem;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--red);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  .service-item:hover { background: var(--navy3); }
+  .service-item:hover::before { transform: scaleY(1); }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: rgba(255,215,0,0.15);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .service-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--white);
+  }
+
+  .service-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* STEPS */
+  .steps { margin-top: 3rem; }
+
+  .step {
+    display: flex;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--red);
+    opacity: 0.3;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 52px;
+    text-align: right;
+    transition: opacity 0.2s;
+  }
+
+  .step:hover .step-num { opacity: 0.8; }
+
+  .step-content { flex: 1; padding-top: 0.3rem; }
+
+  .step-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    color: var(--white);
+  }
+
+  .step-desc { font-size: 0.875rem; color: var(--text-muted); }
+
+  /* PROOF */
+  .proof-card {
+    background: var(--navy2);
+    border: 1px solid var(--border-bright);
+    border-left: 4px solid var(--star);
+    padding: 2.5rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .proof-stars {
+    font-size: 13px;
+    color: var(--star);
+    letter-spacing: 4px;
+    margin-bottom: 1.25rem;
+  }
+
+  .proof-text {
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    font-style: italic;
+    color: var(--text);
+    font-family: 'Playfair Display', serif;
+  }
+
+  .proof-meta { font-size: 11px; letter-spacing: 0.15em; color: var(--star); text-transform: uppercase; font-family: 'DM Sans', sans-serif; font-weight: 500; }
+
+  .proof-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 1.5rem;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-bright);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .proof-link:hover { color: var(--star); border-color: var(--star); }
+
+  /* CTA */
+  .cta-section { padding: 6rem 0; text-align: center; }
+
+  .cta-flag-strip {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 3rem;
+  }
+
+  .flag-block {
+    height: 6px;
+    border-radius: 1px;
+    flex: 1;
+    max-width: 48px;
+  }
+
+  .flag-red { background: var(--red); }
+  .flag-white { background: rgba(244,241,236,0.3); }
+  .flag-blue { background: var(--navy3); border: 1px solid var(--border-bright); }
+
+  .cta-sub { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem; max-width: 460px; margin-left: auto; margin-right: auto; }
+
+  .urgency-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .urgency-item { text-align: center; }
+
+  .urgency-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--star);
+    line-height: 1;
+  }
+
+  .urgency-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+  .urgency-divider { width: 1px; height: 48px; background: var(--border-bright); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  footer .stars-footer { color: var(--star); letter-spacing: 8px; display: block; margin-bottom: 0.5rem; font-size: 10px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 520px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .step { gap: 1rem; }
+    .step-num { width: 36px; font-size: 2.5rem; }
+    .urgency-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stripe-bar"></div>
+
+<!-- STAR FIELD -->
+<div class="starfield" id="starfield"></div>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="star-divider">
+      <span class="star-icon">★</span>
+      <span class="eyebrow">Digital Campaign Manager</span>
+      <span class="star-icon">★</span>
+    </div>
+    <h1>
+      <span class="line-white">Let's get</span>
+      <span class="line-red">you to</span>
+      <span class="line-star">November.</span>
+    </h1>
+    <p class="hero-sub">You won the primary. Now the real race begins. I handle your entire social media campaign so you can stay focused on voters.</p>
+    <div class="hero-cta">
+      <a href="https://calendly.com/halimamuhammad/consultation-call-w-halima" class="btn-primary" target="_blank">
+        Book a free consultation
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div style="margin-top:1rem;">
+        <span class="spots-badge"><span class="spots-dot"></span>Limited spots — first come, first served</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- WHAT I DO -->
+  <section class="fade-in">
+    <p class="section-label">What I do</p>
+    <h2>Your full digital<br><em>presence, managed.</em></h2>
+    <p style="color:var(--text-muted); max-width:500px;">From setup to Election Day, I run your social media so your campaign looks professional, stays active, and reaches the right voters.</p>
+
+    <div class="services-grid">
+      <div class="service-item">
+        <p class="service-num">01</p>
+        <p class="service-title">Social media setup</p>
+        <p class="service-desc">Facebook, Instagram, and more — fully branded, optimized, and ready to go.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">02</p>
+        <p class="service-title">Content creation</p>
+        <p class="service-desc">Posts, graphics, and messaging that connect with your community and tell your story.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">03</p>
+        <p class="service-title">Paid social ads</p>
+        <p class="service-desc">Targeted Facebook and Instagram ads that put your name in front of voters in your district.</p>
+      </div>
+      <div class="service-item">
+        <p class="service-num">04</p>
+        <p class="service-title">Ongoing management</p>
+        <p class="service-desc">Weekly content, engagement, and strategy all the way to November 3rd.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- HOW IT WORKS -->
+  <section class="fade-in">
+    <p class="section-label">How it works</p>
+    <h2>Simple process,<br><em>real results.</em></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <p class="step-title">Book a free call</p>
+          <p class="step-desc">We talk through your race, your goals, and what winning looks like for you. No pressure, just strategy.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <p class="step-title">We build your digital footprint</p>
+          <p class="step-desc">I set up and brand all your social accounts, create your content strategy, and get everything ready to launch.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <p class="step-title">I run it — you focus on voters</p>
+          <p class="step-desc">Weekly content, ads, and engagement managed for you from now through Election Day.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <p class="step-title">You win in November</p>
+          <p class="step-desc">A strong digital presence turns online supporters into real votes. That's the goal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PROOF -->
+  <section class="fade-in">
+    <p class="section-label">Proven results</p>
+    <h2>I've been where<br><em>you are.</em></h2>
+    <p style="color:var(--text-muted); max-width:500px; margin-bottom:0;">I'm not selling theory. I've run this exact playbook — and helped a candidate win with it.</p>
+
+    <div class="proof-card">
+      <div class="proof-stars">★ ★ ★ ★ ★</div>
+      <p class="proof-text">Bruce Carter ran as a political newcomer against an incumbent in Porterdale, GA. With a fully managed digital presence and clear campaign messaging, he won his race by just 2 votes — proof that every single impression counts.</p>
+      <p class="proof-meta">Bruce Carter — Porterdale, GA — 2025</p>
+      <a href="https://bruce4porterdale.com" class="proof-link" target="_blank">
+        See the campaign
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CTA -->
+  <section class="cta-section fade-in">
+    <div class="cta-flag-strip">
+      <div class="flag-block flag-red"></div><div class="flag-block flag-white"></div><div class="flag-block flag-red"></div>
+      <div class="flag-block flag-white"></div><div class="flag-block flag-red"></div><div class="flag-block flag-white"></div>
+      <div class="flag-block flag-red"></div><div class="flag-block flag-white"></div><div class="flag-block flag-red"></div>
+    </div>
+    <p class="section-label" style="justify-content:center;">Ready to win?</p>
+    <h2>November is<br><em>closer than you think.</em></h2>
+    <p class="cta-sub">Spots are limited and filling fast. Book your free consultation today and let's talk about what it takes to close this out.</p>
+    <a href="https://calendly.com/halimamuhammad/consultation-call-w-halima" class="btn-primary" target="_blank">
+      Book your free call
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <div class="urgency-row">
+      <div class="urgency-item">
+        <div class="urgency-num">5</div>
+        <div class="urgency-label">Months to Nov 3</div>
+      </div>
+      <div class="urgency-divider"></div>
+      <div class="urgency-item">
+        <div class="urgency-num">1</div>
+        <div class="urgency-label">Free consultation</div>
+      </div>
+      <div class="urgency-divider"></div>
+      <div class="urgency-item">
+        <div class="urgency-num">0</div>
+        <div class="urgency-label">Obligation to book</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="container">
+  <div style="border-top: 1px solid rgba(255,255,255,0.08); padding: 2.5rem 0; margin-top: 0;">
+    <p style="font-size: 10px; color: var(--text-muted); line-height: 1.8; letter-spacing: 0.03em; text-align: center; max-width: 580px; margin: 0 auto;">
+      <span style="color: var(--star); font-size: 9px; letter-spacing: 0.2em; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">Disclaimer</span>
+      Halima Muhammad provides digital campaign management and social media services only. Results may vary based on race, district, voter turnout, candidate engagement, advertising budget, and other factors outside of our control. No guarantee of electoral victory, vote count, or campaign outcome is expressed or implied. Hiring this service does not ensure a win. All political strategy, messaging decisions, and campaign conduct remain the sole responsibility of the candidate. This is a professional services engagement, not a guarantee of results.
+    </p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <span class="stars-footer">★ ★ ★ ★ ★</span>
+    Halima Muhammad &nbsp;·&nbsp; Digital Campaign Manager &nbsp;·&nbsp; Georgia
+  </div>
+</footer>
+
+<script>
+  const sf = document.getElementById('starfield');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2 + 1;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      --op:${Math.random() * 0.5 + 0.1};
+      --dur:${Math.random() * 4 + 2}s;
+      animation-delay:${Math.random() * 4}s;
+    `;
+    sf.appendChild(s);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
