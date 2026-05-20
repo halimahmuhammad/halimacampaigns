@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disclaimer — Your Digital Campaign Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0B1F3A; --navy2: #122444;
+    --red: #C8102E; --white: #F4F1EC;
+    --star: #FFD700; --text: #F4F1EC; --text-muted: #8A9BB5;
+    --border: rgba(255,255,255,0.08); --border-bright: rgba(255,255,255,0.15);
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--navy); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+  .stripe-bar { position: fixed; top:0; left:0; right:0; height:4px; background: repeating-linear-gradient(90deg,var(--red) 0px,var(--red) 40px,var(--white) 40px,var(--white) 80px,var(--navy) 80px,var(--navy) 120px); z-index:100; }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+  .page-wrap { padding: 7rem 0 5rem; }
+
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    border-bottom: 1px solid var(--border-bright); padding-bottom: 2px;
+    margin-bottom: 3rem; transition: color 0.2s, border-color 0.2s;
+  }
+  .back-link:hover { color: var(--star); border-color: var(--star); }
+
+  .eyebrow { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--star); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .eyebrow::before { content: '★'; font-size: 8px; }
+  .eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--border-bright); }
+
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 400; line-height: 1; letter-spacing: 0.02em; margin-bottom: 2.5rem; color: var(--white); }
+
+  .disclaimer-card {
+    background: var(--navy2);
+    border: 1px solid var(--border-bright);
+    border-left: 4px solid var(--star);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .disclaimer-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem; letter-spacing: 0.05em;
+    color: var(--star); margin-bottom: 1rem;
+  }
+
+  .disclaimer-card p {
+    font-size: 0.9rem; color: var(--text-muted);
+    line-height: 1.85; margin-bottom: 1rem;
+  }
+
+  .disclaimer-card p:last-child { margin-bottom: 0; }
+
+  .disclaimer-card ul {
+    list-style: none; margin: 0.75rem 0 1rem;
+  }
+
+  .disclaimer-card ul li {
+    font-size: 0.9rem; color: var(--text-muted);
+    line-height: 1.85; padding-left: 1.25rem;
+    position: relative; margin-bottom: 0.25rem;
+  }
+
+  .disclaimer-card ul li::before {
+    content: '★'; font-size: 7px; color: var(--star);
+    position: absolute; left: 0; top: 0.45rem;
+  }
+
+  .updated { font-size: 10px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4rem; }
+  footer .stars-footer { color: var(--star); letter-spacing: 8px; display: block; margin-bottom: 0.5rem; font-size: 10px; }
+</style>
+</head>
+<body>
+
+<div class="stripe-bar"></div>
+
+<div class="container">
+  <div class="page-wrap">
+
+    <a href="/" class="back-link">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to home
+    </a>
+
+    <p class="eyebrow">Legal</p>
+    <h1>Terms &<br>Disclaimer</h1>
+
+    <div class="disclaimer-card">
+      <h2>Services Disclaimer</h2>
+      <p>Halima Muhammad, operating as Your Digital Campaign Manager, provides digital campaign management and social media services only. By engaging these services, you acknowledge and agree to the following:</p>
+      <ul>
+        <li>No guarantee of electoral victory, vote count, or campaign outcome is expressed or implied.</li>
+        <li>Results may vary based on race, district, voter turnout, candidate engagement, advertising budget, and other factors outside of our control.</li>
+        <li>Hiring this service does not ensure a win. A strong digital presence increases visibility and voter reach but cannot determine election outcomes.</li>
+        <li>All political strategy, messaging decisions, platform positions, and campaign conduct remain the sole responsibility of the candidate.</li>
+        <li>The candidate is solely responsible for compliance with all applicable campaign finance laws, election regulations, and disclosure requirements.</li>
+        <li>Ad spend, printing, event costs, and all other campaign operating expenses are the sole responsibility of the candidate and are not included in the service fee.</li>
+      </ul>
+    </div>
+
+    <div class="disclaimer-card">
+      <h2>Nonpartisan Policy</h2>
+      <p>Your Digital Campaign Manager operates on a strictly nonpartisan basis. Services are offered to candidates regardless of party affiliation, provided there is no direct conflict of interest between clients competing for the same seat or district.</p>
+      <p>Engaging this service does not constitute an endorsement of any candidate, party, policy position, or political platform.</p>
+    </div>
+
+    <div class="disclaimer-card">
+      <h2>Professional Services Agreement</h2>
+      <p>This is a professional services engagement, not a guarantee of results. All services are provided on a best-efforts basis. Your Digital Campaign Manager reserves the right to decline or discontinue services at any time if a conflict of interest arises.</p>
+      <p>Pricing is determined on a per-candidate basis during the initial consultation call and is dependent on the scope, race type, and timeline of the engagement.</p>
+    </div>
+
+    <p class="updated">Last updated: May 2026</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <span class="stars-footer">★ ★ ★ ★ ★</span>
+    Halima Muhammad &nbsp;·&nbsp; Digital Campaign Manager &nbsp;·&nbsp; Georgia
+  </div>
+</footer>
+
+</body>
+</html>
